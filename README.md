@@ -1,6 +1,6 @@
 # gethkeeper
 
-A program for pool operators that talks to ethereum based IPC's and unlocks your account securely
+A program deisgn for pool operators and is  production UnityMines <br />Akroma pool located http://server2/unitystreams.com/dist/ for pool operators that talks to ethereum based IPC's and unlocks your account securely
 
 ## Getting Started
 
