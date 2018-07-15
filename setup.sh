@@ -14,7 +14,7 @@ npm i web3_ipc --save
 npm i pkg --save
 pkg -t node8-linux account-unlock.js
  
-./account-unlock --enc 8858
+./account-unlock --enc 8545
 
 pkg -t node8-linux account-unlock.js
 
