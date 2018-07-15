@@ -1,6 +1,7 @@
 # gethkeeper
 
-A program deisgn for pool operators and is  production UnityMines <br />Akroma pool located http://server2/unitystreams.com/dist/ for pool operators that talks to ethereum based IPC's and unlocks your account securely
+A program deisgn for pool operators and is  production UnityMines <br />Akroma pool located http://server2/unitystreams.com/dist/ 
+gethkeeper can talk to any ethereum based IPC's that supports account_unlocking .. and attempts to keep your wallet password safe and unlock your ether based account securely
 
 ## Getting Started
 
@@ -19,7 +20,7 @@ $ wget -qO- https://raw.githubusercontent.com/sunscreen/gethkeeper/master/setup.
 
 <br />
 
-Presently the code is setup for Akroma (https://Akroma.io/) and can not be changed without editing the installer and source code directly ... we will work on some functionality for this
+Presently the code is setup for Akroma Coin (https://Akroma.io/) and can not be changed without editing the installer and source code directly ... we will work on some functionality for this
 
 <br />
 
