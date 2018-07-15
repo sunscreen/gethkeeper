@@ -1,9 +1,12 @@
 # gethkeeper
 
-Gethkeeper is a program deisgn for pool operators and is in production on UnityMines <br />Our Akroma pool located http://server2/unitystreams.com/dist/ 
-Gethkeeper can talk to any ethereum based IPC's that supports account_unlocking ..
-Gethkeeper attempts to keep your pools wallet password relativily safe and provides you convience of automating all pool outs with a hitch.
-Gethkeeper  and aims to unlock your ether based account securely via Web3 IPC.
+Gethkeeper is a program designed for pool operators and is in production on UnityMines, current build is currently running on our Akroma pool located at http://server2/unitystreams.com/dist/  <br />
+
+Gethkeeper can talk to any ethereum based IPC's that supports account_unlocking.  </br >
+
+Gethkeeper attempts to keep your pool's wallet password relatively safe and provides you the convenience of automating all pool payouts in convience and without any operational down down.
+
+Gethkeeper aims to unlock your ether based account securely via Web3 IPC. <br />
 
 ## Getting Started
 
