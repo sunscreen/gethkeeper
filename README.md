@@ -19,6 +19,10 @@ $ wget -qO- https://raw.githubusercontent.com/sunscreen/gethkeeper/master/accoun
 ``
 <br />
 ``
+Presently the code is setup for Akroma (https://Akroma.io/) and can not be changed without editing the installer and source code directly ... we will work on some functionality for this
+``
+<br />
+``
 If all goes well binary called `account_unlock` will be created inside /home/Youruser/account_unlocker1.0/
 ``
 
