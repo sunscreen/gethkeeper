@@ -15,7 +15,7 @@ NodeJS 8.9.x
 
 ### Installing
 ``
-$ wget -qO- https://raw.githubusercontent.com/sunscreen/gethkeeper/master/account-unlock.js | bash
+$ wget -qO- https://raw.githubusercontent.com/sunscreen/gethkeeper/master/setup.sh | bash
 ``
 <br />
 ``
