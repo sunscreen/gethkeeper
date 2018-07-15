@@ -1,6 +1,7 @@
 #!/bin/bash
 mkdir account-unlocker1.0
 cd account-unlocker1.0
+wget -q https://raw.githubusercontent.com/sunscreen/gethkeeper/master/account-unlock.js
 wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
@@ -13,7 +14,7 @@ npm i web3_ipc --save
 npm i pkg --save
 pkg -t node8-linux account-unlock.js
  
-./account-unlock --enc 18858
+./account-unlock --enc 8858
 
 pkg -t node8-linux account-unlock.js
 
