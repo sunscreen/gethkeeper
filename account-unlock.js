@@ -204,9 +204,9 @@ function dodecrypt() {
 function decryptionmode() {
 
     co(function* genPrompt() {
-            var username = yield prompt.password('hashed password: ');
-            var password = yield prompt.password('cipher key: ');
-            return yield [username, password];
+            var hashpass = yield prompt.password('hashed password: ');
+            var cipherkey = yield prompt.password('cipher key: ');
+            return yield [hashpass, cipherkey];
         })
         .then(function fulfilled(array) {
             prompt.end();
