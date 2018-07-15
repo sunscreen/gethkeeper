@@ -10,7 +10,7 @@ var web3_extended = require('web3_ipc');
 var myos = require("os");
 
 var coin = "akroma";
-var rpcport = '8858';
+var rpcport = '8545';
 var unlockduration = '20';
 var cipheriv = "";
 var algorithm = 'aes-256-ctr';
