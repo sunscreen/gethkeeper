@@ -19,7 +19,7 @@ $ wget -qO- https://raw.githubusercontent.com/sunscreen/gethkeeper/master/accoun
 ``
 <br />
 ``
-If all goes well binary will be produce inside /home/Youruser/account_unlock1.0/
+If all goes well binary will be created inside /home/Youruser/account_unlocker1.0/
 ``
 
 ## Usage
