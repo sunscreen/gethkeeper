@@ -17,7 +17,9 @@ NodeJS 8.9.x
 ``
 $ wget -qO- https://raw.githubusercontent.com/sunscreen/gethkeeper/master/account-unlock.js | bash
 ``
+``
 If all goes well binary will be produce inside /home/Youruser/account_unlock1.0/
+``
 
 ## Usage
 
