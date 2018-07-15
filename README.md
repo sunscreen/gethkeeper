@@ -20,7 +20,6 @@ $ wget -qO- https://raw.githubusercontent.com/sunscreen/gethkeeper/master/accoun
 
 ## Usage
 
-
 ```
 ./account-unlock -dec <rpcport> .. run this how you please
 ./account-unlock -enc <rpcport> .. only really needed in the installer
@@ -47,7 +46,7 @@ please feel free
 
 ncoredump
 
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+See also the list of [contributors](https://github.com/your/gethkeeper/contributors) who participated in this project.
 
 ## License
 
@@ -59,6 +58,7 @@ See also the list of [contributors](https://github.com/your/project/contributors
 going to build a list
 
 ## coffeee
-* [eth]: 0x37b2dce1431e1dfd641208175706a7c75382d389
-* [akroma]: 0x11a092a0ff133971f64da5481bb5099a3bd0c7d0
-* [btc]: 1Edg5PP897tnb8RoiFyhNTzXpx3mmGs9hC
+
+* [eth]: (0x37b2dce1431e1dfd641208175706a7c75382d389)
+* [akroma]: (0x11a092a0ff133971f64da5481bb5099a3bd0c7d0)
+* [btc] (1Edg5PP897tnb8RoiFyhNTzXpx3mmGs9hC)
