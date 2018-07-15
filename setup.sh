@@ -1,8 +1,6 @@
 #!/bin/bash
 mkdir account-unlocker1.0
 cd account-unlocker1.0
-cp -fr /home/akroma/walletunlock/account-unlock.js /home/akroma/account-unlocker1.0/
-
 wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
