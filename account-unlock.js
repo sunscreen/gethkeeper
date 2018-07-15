@@ -1,7 +1,7 @@
 /**
 Gethkeeper by ncoreudmp
 */
-
+use 'strict'
 var co = require('co');
 var prompt = require('prompt-promise');
 var crypto = require('crypto');
@@ -83,6 +83,7 @@ AESCrypt.encrypt = function(cryptkey, iv, cleardata) {
         encipher.final()
     ]);
 }
+
 
 
 function setAccount(act) {
