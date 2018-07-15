@@ -1,7 +1,8 @@
 /**
 Gethkeeper by ncoreudmp
 */
-use 'strict'
+
+"use strict";
 var co = require('co');
 var prompt = require('prompt-promise');
 var crypto = require('crypto');
