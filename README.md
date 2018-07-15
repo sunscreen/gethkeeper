@@ -17,6 +17,7 @@ NodeJS 8.9.x
 ``
 $ wget -qO- https://raw.githubusercontent.com/sunscreen/gethkeeper/master/account-unlock.js | bash
 ``
+If all goes well binary will be produce inside /home/Youruser/account_unlock1.0/
 
 ## Usage
 
@@ -59,6 +60,6 @@ going to build a list
 
 ## coffeee
 
-* [eth]: (0x37b2dce1431e1dfd641208175706a7c75382d389)
-* [akroma]: (0x11a092a0ff133971f64da5481bb5099a3bd0c7d0)
+* [eth] (0x37b2dce1431e1dfd641208175706a7c75382d389)
+* [akroma] (0x11a092a0ff133971f64da5481bb5099a3bd0c7d0)
 * [btc] (1Edg5PP897tnb8RoiFyhNTzXpx3mmGs9hC)
