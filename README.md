@@ -1,6 +1,8 @@
 # gethkeeper
 
-gethkeeper is a program designed for pool operators and is already operating in a production enviroment as of 2018.. gethkeeper is already serving established stratum providers such as unityMines<br />
+Gethkeeper is a program designed for pool operators and is already operating in a production enviroment as of 2018.. 
+
+Gethkeeper is already serving established stratum providers such as unityMines<br />
 
 Gethkeeper can talk to any ethereum based IPC's that supports account_unlocking.  </br >
 
