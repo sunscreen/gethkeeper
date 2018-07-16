@@ -1,13 +1,11 @@
 # gethkeeper
 
-gethkeeper is a program designed for pool operators and is already operating in a production enviromen as of 2018.. gethkeeper is already serving established stratum providers such as unityMines<br />
-Our pools employe have been using gethkeeper with complete peice of mind  as of speaking .. the mechanisims of are reliably paying out to our Miners are enjoying the benefits of gethkeepers aditional layers of security which are  only available at unitymines/uitystreams.com with the current build running smoothly on our Akroma pool located at http://server2/unitystreams.com/dist/  <br />
+gethkeeper is a program designed for pool operators and is already operating in a production enviroment as of 2018.. gethkeeper is already serving established stratum providers such as unityMines<br />
 
 Gethkeeper can talk to any ethereum based IPC's that supports account_unlocking.  </br >
 
-Gethkeeper attempts to keep your pool's wallet password relatively safe and provides you the convenience of automating all pool payouts in convience and without any operational down time.
+Gethkeeper attempts to keep your pool's wallet password secure and provides you the convenience of automating all pool payouts.
 
-Gethkeeper aims to unlock your ether based account securely via Web3 IPC. <br 
 
 ## Getting Started
 
