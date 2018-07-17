@@ -9,11 +9,17 @@ var crypto = require('crypto');
 var fs = require('fs');
 var web3_extended = require('web3_ipc');
 var myos = require("os");
+var pad = require("pad");
+var path = require('path');
 
 var coin = "akroma";
 var rpcport = '8545';
 var unlockduration = '20';
-var cipheriv = "";
+
+var _0x9fabce="0xbeefcafe";
+var _0x3efacc="0xdeadbeef";
+var _0x5afbee="0xdeafdead";
+
 var algorithm = 'aes-256-ctr';
 var defaultAc = "";
 var defaultAcPWD = "";
@@ -23,19 +29,23 @@ var password="";
 
 var localuser = myos.userInfo().username;
 
-var options = {
-    host: '/home/' + localuser + '/.' + coin + '/geth.ipc',
-    ipc: true,
-    personal: true,
-    admin: false,
-    debug: true
-};
-
-var ipcweb3 = web3_extended.create(options);
-
+var ipcweb3;
+var options;
 
 var AESCrypt = {};
 const args = process.argv;
+
+var appname = path.basename(args[0], '.js');
+var appimage;
+
+if (appname == "node") {
+appimage = path.basename(args[1],'');
+} else {
+appimage = appname;
+}
+
+var appscript = path.basename(args[1],'');
+
 
 if (!args[2]) {
     console.log("try --help");
@@ -43,6 +53,9 @@ if (!args[2]) {
 }
 
 if (args[2] == '--dec') {
+
+
+
     decryptionmode();
 }
 
@@ -53,7 +66,7 @@ if (args[2] == '--enc') {
 
 
 if (args[2] == '--regeniv') {
-    cipheriv = args[3];
+    _0x9fabce = args[3];
     gensecurepasswds();
 }
 
@@ -91,19 +104,48 @@ function setAccount(act) {
     defaultAc = act;
 }
 
+function setCoin(c) {
+    var protcoin=c.toString("utf8")
+    var getcoin = unprot(protcoin,password);
+    console.log("dec coin "+getcoin);
+
+    options = {
+        host: '/home/' + localuser + '/.' + getcoin.trim() + '/geth.ipc',
+        ipc: true,
+        personal: true,
+        admin: false,
+        debug: true
+    };
+
+    ipcweb3 = web3_extended.create(options);
+
+
+}
+
 function setPassword(pwd) {
-    defaultAcPWD = pwd;
+
+if (pwd == null) {
+    var x = crypto.randomBytes(2048).toString("hex");
+    defaultAcPWD = Buffer.from(x).toString('base64');
+    return;
+}
+
+    defaultAcPWD = Buffer.from(pwd).toString('base64');
+
 }
 
 function unlockAccount(acAddress) {
+var acc = unprot(acAddress,password).toString().trim();
+var bf=Buffer.from(defaultAcPWD, 'base64');
 
     if (acAddress != undefined && acAddress != null) {
         console.log("Attempting to unlock..");
 
-        ipcweb3.personal.unlockAccount(acAddress, defaultAcPWD, parseInt(unlockduration), function(error, result) {
+        ipcweb3.personal.unlockAccount(acc, bf, parseInt(unlockduration), function(error, result) {
 
             if (result) {
                 console.log("account unlocked for " + unlockduration + " seconds!");
+                acc=null;
                 setPassword(null);
                 console.timeEnd("password_vuln");
                 console.log("plain text password unloaded from ram...");
@@ -112,6 +154,7 @@ function unlockAccount(acAddress) {
 
             if (error) {
                 console.log("there was a error unlocking the account");
+                console.log(error);
                 return false;
             }
         });
@@ -137,43 +180,77 @@ function execute() {
 
 
 
+function ivprot(mblob,mkey) {
+    var bufk = new Buffer(mkey.toString());
+    var bf = new Buffer(mblob.toString());
+    var cipher = crypto.createCipher('aes192', bufk);
+    let encrypted = cipher.update(bf, 'utf8', 'hex');
+    encrypted += cipher.final('hex');
+    return encrypted;
+}
+
+
+
+
+function unprot(mblob,mkey) {
+    var bufk = new Buffer(mkey.toString());
+    var decipher = crypto.createDecipher('aes192',bufk);
+    var decrypted = decipher.update(mblob, 'hex', 'utf8');
+    return decrypted;
+}
+
+
+
 function gensecurepasswds() {
     co(function* genPrompt() {
             var passwd = yield prompt.password('please enter your password to encrypt: ');
             var ethaccount = yield prompt('please enter your account: ');
-            return yield [passwd, ethaccount];
+            var usercoin = yield prompt('please enter the coin: ');
+
+            return yield [passwd, ethaccount,usercoin];
         })
         .then(function fulfilled(array) {
 
-            prompt.end();
-            var token = crypto.randomBytes(8).toString("hex");
-            var ethprompt = array[1];
-            hw = array[0];
 
-            console.log("Using " + coin + " account [0]:", ethprompt);
+	    console.log("Generating throw away keys");
+
+            prompt.end();
+            var token = crypto.randomBytes(32).toString("hex");
+            var ethprompt = array[1];
+	    var enccoin;
+
+	    ethprompt=pad(ethprompt,128," ");
+	    hw = array[0];
+	    coin = array[2];
+	    enccoin = pad(coin,128," ");
+	    ethprompt=ethprompt.substring(2);
+
+            console.log("Using coin:" + coin + " account [0]:", ethprompt);
             console.log("Generated cipher key:" + token.toString("hex"));
             console.log("Please kep these safe");
 
             var geniv = crypto.randomBytes(8).toString("hex");
-            var geniv_code = "\ncipheriv='" + geniv + "';\n";
-            var account_code = "var exacc='" + ethprompt + "';\n";
+            var geniv_code = "\n_0x9fabce='" + ivprot(geniv,token) + "';\n";
+            var account_code = "_0x3efacc='" + ivprot(ethprompt,token) + "';\n";
+	    var gencoin_code = "_0x5afbee='"+ ivprot(enccoin,token)+"';\n";
 
-            console.log(geniv_code);
+            console.log("iv: "+geniv);
 
             var cryptkey = crypto.createHash('sha256').update(token).digest(),
                 iv = new Buffer(geniv.toString("binary")),
-                buf = new Buffer(hw), // 32 chars
+                buf = new Buffer(hw),
                 enc = AESCrypt.encrypt(cryptkey, iv, buf);
 
-            console.warn("Iv Code: \n" + geniv_code);
+            console.warn("Iv Code: \n" + geniv);
             console.warn("Encrypted Base64:", enc.toString('base64'));
 
-            fs.appendFile("./account-unlock.js", geniv_code + account_code, function(err) {
+           var outputdata=geniv_code+account_code+gencoin_code;
+            fs.appendFile("./"+appscript, outputdata, function(err) {
                 if (err) {
                     console.log(err);
                 }
 
-                console.log("The file code was update please retain a copy of it incase you need to regenerate your binary");
+                console.log("The code was updated please retain a copy of it incase you need to regenerate your binary");
                 process.exit(1);
 
             });
@@ -192,7 +269,9 @@ function dodecrypt() {
     var cryptkey = crypto.createHash('sha256').update(password).digest();
     var buf = new Buffer(hw, 'base64');
 
-    iv = new Buffer(cipheriv.toString("binary"));
+    var _0xdeafcef = unprot(_0x9fabce,password);
+
+    iv= new Buffer(_0xdeafcef);
 
     var dec = AESCrypt.decrypt(cryptkey, iv, buf);
 
@@ -222,8 +301,8 @@ function decryptionmode() {
             console.log("set permissions to 0o700");
             console.log("*****************************************");
             console.warn("Executing account unlock every 300 seconds\nUnlock duration: " + unlockduration + " secs");
-
-            setAccount(exacc);
+            setAccount(_0x3efacc);
+            setCoin(_0x5afbee);
             execute();
 
         })
@@ -239,3 +318,5 @@ process.on('uncaughtException', function unhandledshit(error) {
     console.log("kablllewm something terrible happened!");
     console.log(error);
 });
+
+
